@@ -1,5 +1,5 @@
 
-INPUT_LIST = [
+INPUT_LIST_1 = [
     1429,
     1368,
     1661,
@@ -201,4 +201,4 @@ INPUT_LIST = [
     1555,
     1337
 ]
-TARGET = 2020
+TARGET_1 = 2020
