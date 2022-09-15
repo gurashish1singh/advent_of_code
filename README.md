@@ -4,9 +4,7 @@ Playing around with adventofcode[dot]com
 
 
 ### Running the code
-    ```
     python main.py <year> [the package name] <day> [the module name]
-    ```
 
 #### Day One
     - Similar to two-sum
