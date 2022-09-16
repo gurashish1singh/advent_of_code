@@ -13,3 +13,7 @@ Playing around with adventofcode[dot]com
 #### Day Two
     - Sort of a sub-string checker with a letter being present in the string for min and max times
     - An extension of the above but only dealing with positions of the sub-string(single letter) rather than the range
+
+#### Day Three
+    - Array indexing problem with given traversal coordinates
+    - An extension of the above with different traversal coordinates
