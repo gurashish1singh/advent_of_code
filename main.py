@@ -3,16 +3,11 @@ from importlib import import_module
 from typing import Optional
 
 
-YEAR_TO_MODULE_NAME_MAP = {
-    "2020": "twenty"
-}
-
-
 def main(argv: Optional[list[str]] = None) -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "year",
-        choices=["2020"],
+        choices=["twenty"],
         help="Advent of Code year",
     )
     parser.add_argument(
@@ -21,7 +16,7 @@ def main(argv: Optional[list[str]] = None) -> None:
     )
     args = parser.parse_args(argv)
 
-    name = f"{YEAR_TO_MODULE_NAME_MAP[args.year]}.{args.day}"
+    name = f"{args.year}.{args.day}"
     mod = import_module(name)
     mod.main()
 
