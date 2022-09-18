@@ -8,7 +8,7 @@ from twenty.constants import (
 
 
 def main():
-    # il = [
+    # sample_input = [
     #     1721,
     #     366,
     #     299,

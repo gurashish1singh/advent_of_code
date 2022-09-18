@@ -5,7 +5,7 @@ from twenty.constants import INPUT_STRING_3
 
 
 def main():
-    # il = """
+    # sample_input = """
     #     ..##.......
     #     #...#...#..
     #     .#....#..#.
