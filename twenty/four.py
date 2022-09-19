@@ -37,25 +37,23 @@ class PassportValidator:
         "pid",  # Passport ID
         # "cid",  # Country ID --> Not mandatory
     }
+    VALID_PASSPORT_PATTERN = r"(\w{3}):"
 
     def __init__(self, input_string: str) -> None:
         self.input_string = input_string
+        self.raw_passports = self.parse_input()
+
+    def parse_input(self) -> list[str]:
+        # Each new passport is separated by a line break, but the fields in a single
+        # passport may also be separated by line break. This method cleans up the input
+        # and returns a list of strings so that each item in the list is a distinct passport.
+        raw_passports = self.input_string.split("\n\n")
+        return [line.replace("\n", "") for line in raw_passports]
 
     def validate_passport(self) -> int:
-        valid_passport_pattern = r"(\w{3}):"
         valid_passports = 0
-        passport_fields = set()
-        for line in self.input_string.splitlines():
-            line = line.strip()
-            # Filtering out whitespace and new lines.
-            if line:
-                # Extract the passport fields from the string.
-                matched_line = re.findall(valid_passport_pattern, line)
-                passport_fields.update(matched_line)
-            else:
-                # For new lines and whitepace we reset the container.
-                # Each distinct passport will be separated by new line.
-                passport_fields = set()
+        for line in self.raw_passports:
+            passport_fields = set(re.findall(self.VALID_PASSPORT_PATTERN, line))
             if not self.MANDATORY_FIELDS.difference(passport_fields):
                 valid_passports += 1
         return valid_passports
