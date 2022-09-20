@@ -8,7 +8,7 @@ PASSWORD_REGEX = r"(?P<ranges>\d{1,2}\-\d{1,2})\s(?P<letter>\w)\:\s(?P<actual_pa
 
 
 def main() -> None:
-    # il = """
+    # sample_input = """
     #     1-3 a: abcde
     #     1-3 b: cdefg
     #     2-9 c: ccccccccc

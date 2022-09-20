@@ -17,3 +17,7 @@ Playing around with adventofcode[dot]com
 #### Day Three
     - Array indexing problem with given traversal coordinates
     - An extension of the above with different traversal coordinates
+
+#### Day Four
+    - String manipulation with regex
+    - An extention of the above with regex pattern matching
