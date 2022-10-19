@@ -1,5 +1,5 @@
-from common import parse_input
-from twenty.constants import INPUT_STRING_5
+from advent_of_code.common import parse_input
+from advent_of_code.twenty.constants import INPUT_STRING_5
 
 
 def main():
