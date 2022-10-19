@@ -1,7 +1,9 @@
+from __future__ import annotations
+
 from math import prod
 
-from common import parse_input
-from twenty.constants import INPUT_STRING_3
+from advent_of_code.common import parse_input
+from advent_of_code.twenty.constants import INPUT_STRING_3
 
 
 def main():
@@ -44,7 +46,9 @@ class Teleport:
         self.input_string = input_string
         self.path_map = parse_input(self.input_string)
 
-    def get_number_of_trees_traversed(self, index_increment_value: int, path_rows_to_skip: int) -> int:
+    def get_number_of_trees_traversed(
+        self, index_increment_value: int, path_rows_to_skip: int
+    ) -> int:
         current_index = 0
         number_of_trees = 0
         filtered_path = self.get_paths_to_traverse(path_rows_to_skip)
@@ -52,8 +56,8 @@ class Teleport:
         for path in filtered_path:
             current_index += index_increment_value
             if current_index >= len(path):
-                # Since we are incrementing the current_index, we need to wrap around and start from the
-                # beginning of the row.
+                # Since we are incrementing the current_index,
+                # we need to wrap around and start from the beginning of the row.
                 indexes_beyond_limit = current_index - len(path)
                 current_index = indexes_beyond_limit
 

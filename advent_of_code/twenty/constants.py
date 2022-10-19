@@ -1,3 +1,4 @@
+from __future__ import annotations
 
 INPUT_STRING_1 = """
 1429

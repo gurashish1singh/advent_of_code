@@ -1,8 +1,9 @@
+from __future__ import annotations
+
 import re
 
-from common import parse_input
-from twenty.constants import INPUT_STRING_2
-
+from advent_of_code.common import parse_input
+from advent_of_code.twenty.constants import INPUT_STRING_2
 
 PASSWORD_REGEX = r"(?P<ranges>\d{1,2}\-\d{1,2})\s(?P<letter>\w)\:\s(?P<actual_password>[a-z]{1,})"
 
@@ -47,12 +48,13 @@ class PasswordVerifier:
             positions, letter, actual_password = re.search(PASSWORD_REGEX, password).groups()
             if letter in actual_password:
                 first_position, second_position = map(int, positions.split("-"))
-                # According to the problem statement index starts from 1, so i am not going to explicitly
-                # check for first_position to be 0
+                # According to the problem statement index starts from 1,
+                # so i am not going to explicitly check for first_position to be 0
                 first_position, second_position = first_position - 1, second_position - 1
                 first_position_check = actual_password[first_position] == letter
                 second_position_check = actual_password[second_position] == letter
                 if first_position_check ^ second_position_check:
-                    # According to the problem statement you cannot have the letter in both positions
+                    # According to the problem statement you cannot
+                    # have the letter in both positions
                     valid_passwords += 1
         return valid_passwords
