@@ -27,14 +27,6 @@ multi_line_output = 3
 include_trailing_comma = true
 quiet = true
 
-[tool.pytest.ini_options]
-# Exit on first failure and run in quiet mode
-addopts = "-x"
-console_output_style = "count"
-testpaths = [
-    "tests",
-]
-
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"

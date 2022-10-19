@@ -1,9 +1,10 @@
+from __future__ import annotations
+
 import argparse
 from importlib import import_module
-from typing import Optional
 
 
-def main(argv: Optional[list[str]] = None) -> None:
+def main(argv: list[str] | None = None) -> None:
     package_name = __name__.partition(".")[0]
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -11,10 +12,7 @@ def main(argv: Optional[list[str]] = None) -> None:
         choices=["twenty"],
         help="Advent of Code year",
     )
-    parser.add_argument(
-        "day",
-        help="Advent of Code day"
-    )
+    parser.add_argument("day", help="Advent of Code day")
     args = parser.parse_args(argv)
 
     module_name = f"{package_name}.{args.year}.{args.day}"

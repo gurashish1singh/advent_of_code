@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import re
 
 from advent_of_code.twenty.constants import INPUT_STRING_4
@@ -35,13 +37,20 @@ class PassportValidator:
     # They can be all strings, or digits, or a combo. "#" is added optional to capture hex values.
     KEY_AND_VALUE_PATTERN = r"(?=(\w{3}):(\#?\w+|\d+|\#?\w+\d+|\#?\d+\w+)\s*?)"
     MANDATORY_FIELDS_VALIDATION = {
-        "byr": r"192[0-9]|19[3-9][0-9]|200[0-2]",  # Birth Year, between 1920 and 2002
-        "iyr": r"201[0-9]|2020",  # Issue Year, between 2010 and 2020
-        "eyr": r"202[0-9]|2030",  # Expiration Year, between 2020 and 2030
-        "hgt": r"((15[0-9]|1[6-8][0-9]|19[0-3])cm)|((59|6[0-9]|7[0-6])in)",  # Height, 150-193cm or 59-76in
-        "hcl": r"^#([0-9a-f]{6})",  # Hair Color, #6 characters [0-9] and/or [a-f]
-        "ecl": r"amb|blu|brn|gry|grn|hzl|oth",  # Eye Color
-        "pid": r"[0-9]{9}$",  # Passport ID
+        # Birth Year, between 1920 and 2002
+        "byr": r"192[0-9]|19[3-9][0-9]|200[0-2]",
+        # Issue Year, between 2010 and 2020
+        "iyr": r"201[0-9]|2020",
+        # Expiration Year, between 2020 and 2030
+        "eyr": r"202[0-9]|2030",
+        # Height, 150-193cm or 59-76in
+        "hgt": r"((15[0-9]|1[6-8][0-9]|19[0-3])cm)|((59|6[0-9]|7[0-6])in)",
+        # Hair Color, #6 characters [0-9] and/or [a-f]
+        "hcl": r"^#([0-9a-f]{6})",
+        # Eye Color
+        "ecl": r"amb|blu|brn|gry|grn|hzl|oth",
+        # Passport ID
+        "pid": r"[0-9]{9}$",
         # "cid",  # Country ID --> Not mandatory
     }
     MANDATORY_KEYS = set(MANDATORY_FIELDS_VALIDATION.keys())
@@ -68,8 +77,9 @@ class PassportValidator:
                 valid_passports.append(passport_fields)
         return valid_passports
 
-    def validate_passports_with_value_validation(self,
-                                                 passports_with_valid_keys: list[list[tuple[str, str]]]) -> int:
+    def validate_passports_with_value_validation(
+        self, passports_with_valid_keys: list[list[tuple[str, str]]]
+    ) -> int:
         # Problem 2: Apart from the keys, values have to be validated as well
         valid_passports = 0
         for passport in passports_with_valid_keys:
