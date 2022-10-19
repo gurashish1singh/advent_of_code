@@ -1,6 +1,6 @@
 import re
 
-from twenty.constants import INPUT_STRING_4
+from advent_of_code.twenty.constants import INPUT_STRING_4
 
 
 def main():
@@ -52,8 +52,9 @@ class PassportValidator:
 
     def parse_input(self) -> list[str]:
         # Each new passport is separated by a line break, but the fields in a single
-        # passport may also be separated by line break (see sample input). This method cleans up the input
-        # and returns a list of strings so that each item in the list is a distinct passport.
+        # passport may also be separated by line break (see sample input).
+        # This method cleans up the input and returns a list of strings so that each item
+        # in the list is a distinct passport.
         raw_passports = self.input_string.split("\n\n")
         return [line.replace("\n", " ") for line in raw_passports]
 

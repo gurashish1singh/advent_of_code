@@ -1,7 +1,7 @@
 import re
 
-from common import parse_input
-from twenty.constants import INPUT_STRING_2
+from advent_of_code.common import parse_input
+from advent_of_code.twenty.constants import INPUT_STRING_2
 
 
 PASSWORD_REGEX = r"(?P<ranges>\d{1,2}\-\d{1,2})\s(?P<letter>\w)\:\s(?P<actual_password>[a-z]{1,})"

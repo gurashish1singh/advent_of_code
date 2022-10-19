@@ -3,9 +3,13 @@
 Playing around with adventofcode[dot]com
 
 
-### Running the code
-    python main.py <year> [the package name] <day> [the module name]
+## Running the code
+    - Install poetry from: https://python-poetry.org/docs/#installing-with-the-official-installer
+    - Minimum python version required: 3.9
+    - Run `poetry install` to install all dependencies
+    - Run `poetry run aoc <year> [the package name] <day> [the module name]` to run the code
 
+### 2020
 #### Day One
     - Similar to two-sum
     - An extension of the two-sum problem. Adds a third variable to add up to the target.

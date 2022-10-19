@@ -1,7 +1,7 @@
 from math import prod
 
-from common import parse_input
-from twenty.constants import INPUT_STRING_3
+from advent_of_code.common import parse_input
+from advent_of_code.twenty.constants import INPUT_STRING_3
 
 
 def main():

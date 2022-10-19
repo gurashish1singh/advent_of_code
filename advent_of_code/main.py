@@ -4,6 +4,7 @@ from typing import Optional
 
 
 def main(argv: Optional[list[str]] = None) -> None:
+    package_name = __name__.partition(".")[0]
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "year",
@@ -16,8 +17,8 @@ def main(argv: Optional[list[str]] = None) -> None:
     )
     args = parser.parse_args(argv)
 
-    name = f"{args.year}.{args.day}"
-    mod = import_module(name)
+    module_name = f"{package_name}.{args.year}.{args.day}"
+    mod = import_module(module_name)
     mod.main()
 
 
