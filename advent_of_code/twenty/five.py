@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from advent_of_code.common import parse_input
 from advent_of_code.twenty.constants import INPUT_STRING_5
 
@@ -10,10 +12,8 @@ def main():
     #     BBFFBBFRLL
     # """
     sf = SeatFinder(INPUT_STRING_5)
-    sf.find_seat()
-    # sf.find_seat_more_efficiently()
-    highest_seat_id = max(sf.seats)
-    print(f"{highest_seat_id = }")
+    sf.part_one()
+    sf.part_two()
 
 
 class SeatFinder:
@@ -22,9 +22,17 @@ class SeatFinder:
     ROWS = list(range(128))
 
     def __init__(self, input_string: str) -> None:
-        self.input_string = input_string
-        self.seat_numbers = parse_input(self.input_string)
+        self.seat_numbers: list[str] = parse_input(input_string)
         self.seats: list[int] = []
+
+    def part_one(self):
+        self.find_seat()
+        # self.find_seat_more_efficiently()
+        highest_seat_id = max(self.seats)
+        print(f"{highest_seat_id = }")
+
+    def part_two(self):
+        ...
 
     def find_seat(self) -> None:
         for seat in self.seat_numbers:
@@ -32,9 +40,7 @@ class SeatFinder:
             last_three = seat[7:]
             row_number = self.traverse_rows(first_seven)
             column_number = self.traverse_columns(last_three)
-            self.seats.append(
-                self.unique_seat_id(row_number, column_number)
-            )
+            self.seats.append(self.unique_seat_id(row_number, column_number))
 
     def traverse_rows(self, seat: str) -> int:
         rows_left_to_search = self.ROWS
