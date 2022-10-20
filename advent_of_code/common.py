@@ -1,5 +1,27 @@
 from __future__ import annotations
 
+import io
+import pstats
+from cProfile import Profile
+from functools import wraps
+
+
+def profile(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        pr = Profile()
+        pr.enable()
+        return_value = func(*args, **kwargs)
+        pr.disable()
+        s = io.StringIO()
+        sortby = pstats.SortKey.CUMULATIVE
+        ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+        ps.print_stats()
+        print(s.getvalue())
+        return return_value
+
+    return wrapper
+
 
 def parse_input(raw_input_string: str) -> list[str]:
     # To make my life easier, input is stored as raw string and then code converts

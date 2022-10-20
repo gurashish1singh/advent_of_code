@@ -25,14 +25,17 @@ class SeatFinder:
         self.seat_numbers: list[str] = parse_input(input_string)
         self.seats: list[int] = []
 
-    def part_one(self):
+    def part_one(self) -> None:
         self.find_seat()
         # self.find_seat_more_efficiently()
         highest_seat_id = max(self.seats)
         print(f"{highest_seat_id = }")
 
-    def part_two(self):
-        ...
+    def part_two(self) -> None:
+        sorted_seats = sorted(self.seats)
+        new_set = set(list(range(sorted_seats[0], sorted_seats[-1] + 1)))
+        missing_seat = new_set.difference(set(sorted_seats))
+        print(f"{missing_seat = }")
 
     def find_seat(self) -> None:
         for seat in self.seat_numbers:
