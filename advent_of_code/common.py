@@ -4,11 +4,15 @@ import io
 import pstats
 from cProfile import Profile
 from functools import wraps
+from typing import (
+    Any,
+    Callable,
+)
 
 
-def profile(func):
+def profile(func: Callable) -> Any:
     @wraps(func)
-    def wrapper(*args, **kwargs):
+    def wrapper(*args, **kwargs) -> Any:
         pr = Profile()
         pr.enable()
         return_value = func(*args, **kwargs)

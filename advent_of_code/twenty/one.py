@@ -38,6 +38,7 @@ class ExpenseReportFixer:
             if diff in diffs:
                 return diff, val
             diffs[val] = diff
+        raise ValueError(f"No solution found for target: {self.target} in {self.numbers}")
 
     def three_sum_to_target(self) -> tuple[int, int, int]:
         # brute force logic, not at all optimized.
@@ -53,6 +54,7 @@ class ExpenseReportFixer:
                 if diff in diffs:
                     return diff, val_one, val_two
                 diffs.add(val_two)
+        raise ValueError(f"No solution found for target: {self.target} in {self.numbers}")
 
     def final_product(self, tuple_values: tuple[int, ...]) -> int:
         return prod(tuple_values)

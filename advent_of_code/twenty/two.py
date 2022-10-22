@@ -33,7 +33,9 @@ class PasswordVerifier:
         # hence I will not do any additional error handling.
         valid_passwords = 0
         for password in self.passwords:
-            ranges, letter, actual_password = re.search(PASSWORD_REGEX, password).groups()
+            if matched := re.search(PASSWORD_REGEX, password):
+                ranges, letter, actual_password = matched.groups()
+
             if letter in actual_password:
                 min_range, max_range = map(int, ranges.split("-"))
                 count = actual_password.count(letter)
@@ -45,7 +47,9 @@ class PasswordVerifier:
         # Same assumption as above
         valid_passwords = 0
         for password in self.passwords:
-            positions, letter, actual_password = re.search(PASSWORD_REGEX, password).groups()
+            if matched := re.search(PASSWORD_REGEX, password):
+                positions, letter, actual_password = matched.groups()
+
             if letter in actual_password:
                 first_position, second_position = map(int, positions.split("-"))
                 # According to the problem statement index starts from 1,
