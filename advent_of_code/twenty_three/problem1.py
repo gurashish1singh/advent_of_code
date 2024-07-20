@@ -36,18 +36,21 @@ def solve(input_str: list[str]) -> None:
 
 
 if __name__ == "__main__":
+    # Test input
+    input_str = """
+    1abc2
+    pqr3stu8vwx
+    a1b2c3d4e5f
+    treb7uchet
+    """
+    ans = solve(input_str=[line.strip() for line in input_str.split() if line])
+    print(f"Answer for the first problem is: {ans!r}")
+    assert ans == 142
+
+    # Actual input
     in_name = "input1.txt"
     curr_dir = pathlib.Path(__file__).parent.resolve()
     input_file = curr_dir / (pathlib.Path("inputs") / pathlib.Path(in_name))
     with open(input_file, "r") as f:
         ans = solve(input_str=f.readlines())
         print(f"Answer for the first problem is: {ans!r}")
-
-    # input_str = """
-    # 1abc2
-    # pqr3stu8vwx
-    # a1b2c3d4e5f
-    # treb7uchet
-    # """
-    # ans = solve(input_str=[l.strip() for l in input_str.split() if l])
-    # print(f"Answer for the first problem is: {ans!r}")
